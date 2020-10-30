@@ -7,7 +7,7 @@ const main = () => {
   const inc = n => ++n
   kyushuShrines.forEach(prefecture => {
     const csvFileName = `dist/${prefecture}.csv`;
-    fs.writeFileSync(csvFileName,"社格,名前,読み,住所,電話番号,画像,詳細ページのリンク",{flag: "w"});
+    fs.writeFileSync(csvFileName,"社格,名前,読み,住所,電話番号,画像,詳細ページのリンク\n",{flag: "w"});
     client.fetch(`http://shrine.mobi/area/kyushu/${prefecture}/`, (e, $, res, body) => {
       const count = $(".line_head>h2").text().match(/.*?(\d+).*?/)[1];
       const page = Math.ceil(Number.parseInt(count) / pageLimit);
